@@ -13,6 +13,12 @@
 
 use Illuminate\Http\Request;
 
+Route::get('/', function (Request $request) {
+
+    return view('welcome');
+
+});
+
 Route::post('/validarFirma', function (Request $request) {
 
     $hash  = $request->input('hash');
