@@ -23,10 +23,10 @@ Route::post('/validarFirma', function (Request $request) {
 
     if($result == $hash )
     {
-        return \Illuminate\Http\Response::create('true',200);
+        return \Illuminate\Http\Response::create(array('message'=>$value, 'status' =>true),200);
     }else
     {
-        return \Illuminate\Http\Response::create('false',200);
+        return \Illuminate\Http\Response::create(array('message'=>$value, 'status' =>false),200);
     }
 
 
