@@ -15,9 +15,9 @@ use Illuminate\Http\Request;
 
 Route::post('/validarFirma', function (Request $request) {
 
-    $hash  = $request->input('hash');
+    $hash  = $_POST['hash'];
 
-    $value = $request->input('value');
+    $value = $_POST['value'];
 
     return $value;
 
