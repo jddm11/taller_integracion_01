@@ -29,8 +29,11 @@ Route::post('/validarFirma', function (Request $request) {
         return \Illuminate\Http\Response::create(array('message'=>$value, 'status' =>false),200);
     }
 
+});
 
-     //$_POST['ppasscode']);
+Route::get('/status', function (Request $request) {
+
+    return \Illuminate\Http\Response::create('',201);
 });
 
 /*
