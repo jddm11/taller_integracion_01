@@ -11,13 +11,15 @@
 |
 */
 
-Route::post('/validarFirma', function () {
+use Illuminate\Http\Request;
 
-    $hash  = Input::get('hash');
+Route::post('/validarFirma', function (Request $request) {
 
-    $value = Input::get('value');
+    $hash  = $request->input('hash');
 
-    $result = hash('sha256', $hash);
+    $value = $request->input('value');
+
+    $result = hash('sha256', $value);
 
     if($result == $hash )
     {
