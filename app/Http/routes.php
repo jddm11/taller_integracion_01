@@ -36,6 +36,19 @@ Route::get('/status', function (Request $request) {
     return \Illuminate\Http\Response::create('',201);
 });
 
+
+Route::get('/texto', function (Request $request) {
+
+    $result = file_get_contents('https://s3.amazonaws.com/files.principal/texto.txt');
+
+    $hash = hash('sha256', $result);
+
+    return \Illuminate\Http\Response::create(array('text' => $result,'hash' => $hash),200);
+});
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
