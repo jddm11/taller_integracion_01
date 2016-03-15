@@ -21,7 +21,7 @@ Route::post('/validarFirma', function (Request $request) {
 
     $result = hash('sha256', $value);
 
-    if($result == $hash )
+    if(strtoupper($result) == strtoupper($hash))
     {
         return \Illuminate\Http\Response::create(array('message'=>$value, 'status' =>true),200);
     }else
@@ -43,7 +43,7 @@ Route::get('/texto', function (Request $request) {
 
     $hash = hash('sha256', $result);
 
-    return \Illuminate\Http\Response::create(array('text' => $result,'hash' => $hash),200);
+    return \Illuminate\Http\Response::create(array('text' => $result,'hash' => strtoupper($hash)),200);
 });
 
 
