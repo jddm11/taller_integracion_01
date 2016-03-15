@@ -19,12 +19,6 @@ Route::post('/validarFirma', function (Request $request) {
 
     $value = $request->input('value');
 
-    $input = $request->all();
-
-    return print_r($request);
-
-    return $value;
-
     $result = hash('sha256', $value);
 
     if($result == $hash )
