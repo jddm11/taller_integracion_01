@@ -13,11 +13,15 @@
 
 use Illuminate\Http\Request;
 
-Route::post('/validarFirma', function () {
+Route::post('/validarFirma', function (Request $request) {
 
-    $hash  = Request::input('hash');
+    $hash  = $request->input('hash');
 
-    $value = Request::input('value');
+    $value = $request->input('value');
+
+    $input = $request->all();
+
+    return print_r($request);
 
     return $value;
 
