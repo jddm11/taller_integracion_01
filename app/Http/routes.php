@@ -11,8 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::post('/validarFirma', function () {
+
+    $hash  = Input::get('hash');
+
+    $value = Input::get('value');
+
+    $result = hash('sha256', $hash);
+
+    if($result == $hash )
+    {
+        return true;
+    }else
+    {
+        return false;
+    }
+
+
+     //$_POST['ppasscode']);
 });
 
 /*
