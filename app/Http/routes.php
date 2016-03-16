@@ -23,7 +23,7 @@ Route::post('/validarFirma', function (Request $request) {
 
     $hash  = $request->input('hash');
 
-    $value = $request->input('value');
+    $value = $request->input('mensaje');
 
     $result = hash('sha256', $value);
 
