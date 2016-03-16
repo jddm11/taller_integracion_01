@@ -29,10 +29,10 @@ Route::post('/validarFirma', function (Request $request) {
 
     if(strtoupper($result) == strtoupper($hash))
     {
-        return \Illuminate\Http\Response::create(array('message'=>$value, 'status' =>true),200);
+        return \Illuminate\Http\Response::create(array('mensaje'=>$value, 'valido' =>true),200);
     }else
     {
-        return \Illuminate\Http\Response::create(array('message'=>$value, 'status' =>false),200);
+        return \Illuminate\Http\Response::create(array('mensaje'=>$value, 'valido' =>false),400);
     }
 
 });
