@@ -21,18 +21,22 @@ Route::get('/', function (Request $request) {
 
 Route::post('/validarFirma', function (Request $request) {
 
-    $hash  = $request->input('hash');
 
-    $value = $request->input('mensaje');
+    if($request->has('mensaje') && $request->has('hash')) {
+        $hash = $request->input('hash');
+        $value = $request->input('mensaje');
 
-    $result = hash('sha256', $value);
 
-    if(strtoupper($result) == strtoupper($hash))
-    {
-        return \Illuminate\Http\Response::create(array('mensaje'=>$value, 'valido' =>true),200);
+        $result = hash('sha256', $value);
+
+        if (strtoupper($result) == strtoupper($hash)) {
+            return \Illuminate\Http\Response::create(array('mensaje' => $value, 'valido' => true), 200);
+        } else {
+            return \Illuminate\Http\Response::create(array('mensaje' => $value, 'valido' => false), 200);
+        }
     }else
     {
-        return \Illuminate\Http\Response::create(array('mensaje'=>$value, 'valido' =>false),400);
+        return \Illuminate\Http\Response::create(array('mensaje' => 'Parametros erroneos', 'valido' => false), 400);
     }
 
 });
